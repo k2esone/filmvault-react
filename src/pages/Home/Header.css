@@ -23,7 +23,7 @@ section::before {
 
 .header {
 	position: relative;
-	background: url("C:\Users\wolek\IdeaProjects\valut\src\img\headerBig.jpg");
+	background: url('/src/img/headerBig.jpg');
 	color: aliceblue;
 	background-position: center;
 	background-repeat: no-repeat;
