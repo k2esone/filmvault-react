@@ -1,0 +1,11 @@
+.brand_container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+   
+}
+.icon svg{
+position: relative;
+text-align: center;
+
+}

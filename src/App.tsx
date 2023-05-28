@@ -12,6 +12,7 @@ function App() {
  <>
  <NavBar></NavBar>
 <Header></Header>
+<TopMovies></TopMovies>
  </>
   );
 }
