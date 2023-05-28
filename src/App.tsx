@@ -5,6 +5,7 @@ import Carousel from './components/Carousel';
 import MovieComp from './components/MovieComp';
 import NavBar from './components/NavBar';
 import Header from './pages/Home/Header';
+import SupportedPlatforms from './pages/Home/SupportedPlatforms';
 import TopMovies from './pages/Home/TopMovies';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
  <NavBar></NavBar>
 <Header></Header>
 <TopMovies></TopMovies>
+<SupportedPlatforms></SupportedPlatforms>
  </>
   );
 }
