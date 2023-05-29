@@ -1,0 +1,11 @@
+
+.collapse  a:hover {
+	color: rgb(242, 125, 23);
+
+}
+.collapse{
+	
+	text-align: center;
+	
+	width: 100%;
+}
