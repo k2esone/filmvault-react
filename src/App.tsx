@@ -1,4 +1,5 @@
 
+import { Modal } from 'react-bootstrap';
 import './App.css';
 import BrandLogo from './components/BrandLogo';
 import Carousel from './components/Carousel';
