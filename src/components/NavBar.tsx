@@ -3,8 +3,10 @@ import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Modal from "./Modal";
+import LogInModal from "../pages/LogIn/LogInModal";
 const NavBar = () => {
 	const [modalShow, setModalShow] = useState(false);
+	const [loginModalShow, setLogInmodalShow] = useState(false);
 	const [active, setActive] = useState(false);
 
 	const handleMouseOver = () => {
@@ -44,7 +46,8 @@ const NavBar = () => {
 						}
 						id="navbarNavAltMarkup">
 						<div className="navbar-nav ms-auto">
-							<a className="nav-link" href="#">
+							<a onClick={() => setLogInmodalShow(true)}
+							 className="nav-link" href="#">
 								LogIn
 							</a>
 							<a
@@ -53,9 +56,10 @@ const NavBar = () => {
 								href="#">
 								Register
 							</a>
-							<a className="nav-link" href="#portfolio"></a>
+							<a className="nav-link" href="#"></a>
 						</div>
 					</div>
+					<LogInModal show={loginModalShow} onHide={() => setLogInmodalShow(false)}></LogInModal>
 					<Modal show={modalShow} onHide={() => setModalShow(false)}></Modal>
 				</div>
 			</nav>
