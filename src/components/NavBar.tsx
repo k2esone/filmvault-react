@@ -21,7 +21,7 @@ const NavBar = () => {
 		
 			<nav
 				id="navbar"
-				className="navbar navbar-expand-lg position-sticky top-0">
+				className="size navbar navbar-expand-lg position-static top-0">
 				<div className="container">
 					<a className="navbar-brand" href="#">
 						<i className="fa-solid fa-film"></i> FilmVALUT
@@ -47,16 +47,16 @@ const NavBar = () => {
 						id="navbarNavAltMarkup">
 						<div className="navbar-nav ms-auto">
 							<a onClick={() => setLogInmodalShow(true)}
-							 className="nav-link" href="#">
+							 className="nav-button nav-link" href="#">
 								LogIn
 							</a>
 							<a
 								onClick={() => setModalShow(true)}
-								className="nav-link"
+								className="nav-button nav-link"
 								href="#">
 								Register
 							</a>
-							<a className="nav-link" href="#"></a>
+	
 						</div>
 					</div>
 					<LogInModal show={loginModalShow} onHide={() => setLogInmodalShow(false)}></LogInModal>

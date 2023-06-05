@@ -1,10 +1,10 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import MovieComp from "./MovieComp";
 import "./Carousel.css";
+import MovieCard from "./MovieCard";
 
-const Carousel = () => {
+const Carousel = (props: any) => {
 	const settings = {
 		dots: true,
 		infinite: false,
@@ -42,21 +42,15 @@ const Carousel = () => {
 	return (
 		<div className="cards">
 			<Slider {...settings}>
-				<div className="check px-1 mx-2 d-flex justify-content-center">
-					<MovieComp></MovieComp>
-				</div>
-				<div className="check px-1 mx-2 d-flex justify-content-center">
-					<MovieComp></MovieComp>
-				</div>
-				<div className="check px-1 mx-2 d-flex justify-content-center">
-					<MovieComp></MovieComp>
-				</div>
-				<div className="check px-1 mx-2 d-flex justify-content-center">
-					<MovieComp></MovieComp>
-				</div>
-				<div className="check px-1 mx-2 d-flex justify-content-center">
-					<MovieComp></MovieComp>
-				</div>
+				{props.popularMovies.map((movie: any) => (
+					<div className="check px-1 mx-2 d-flex justify-content-center">
+						<MovieCard
+
+							poster_path={movie.poster_path}
+							original_title={movie.original_title}
+							overview={movie.overview}></MovieCard>
+					</div>
+				))}
 			</Slider>
 		</div>
 	);

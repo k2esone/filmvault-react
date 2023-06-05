@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import './SupportedPlatforms.css'
+import "./SupportedPlatforms.css";
+
 
 const SupportedPlatforms = () => {
 	return (
@@ -9,24 +10,23 @@ const SupportedPlatforms = () => {
 
 			<div className="row platform-list">
 				<div className="col-md-6 col-lg-4 col-xl-2 d-flex justify-content-center my-3">
-                    <div className="logo"></div>
-                </div>
+			
+				</div>
 				<div className="col-md-6 col-lg-4 col-xl-2 d-flex justify-content-center my-3">
-                    <div className="logo"></div>
-                </div>
+					<div className="logo"></div>
+				</div>
 				<div className="col-md-6 col-lg-4 col-xl-2 d-flex justify-content-center my-3">
-                    <div className="logo"></div>
-                </div>
+					<div className="logo"></div>
+				</div>
 				<div className="col-md-6 col-lg-4 col-xl-2 d-flex justify-content-center my-3">
-                    <div className="logo"></div>
-                </div>
+					<div className="logo"></div>
+				</div>
 				<div className="col-md-6 col-lg-4 col-xl-2 d-flex justify-content-center my-3">
-                    <div className="logo"></div>
-                </div>
+					<div className="logo"></div>
+				</div>
 				<div className="col-md-6 col-lg-4 col-xl-2 d-flex justify-content-center my-3">
-                    <div className="logo"></div>
-                </div>
-				
+					<div className="logo"></div>
+				</div>
 			</div>
 		</div>
 	);
