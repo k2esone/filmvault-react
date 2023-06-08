@@ -9,7 +9,7 @@ import { Movie } from "../api/Movie";
 const SerchBar = () => {
 	const [searchOption, setSearchOption] = useState("");
 	const [isAMovie, setIsaMovie] = useState(true);
-	const [suggestion, setSuggestions] = useState([]);
+	// const [suggestion, setSuggestions] = useState([]);
 
 	const searchContext = useContext(SerchContext);
 
@@ -25,18 +25,19 @@ const SerchBar = () => {
 		}
 	};
 	const searchMovieOrTvSeries = () => {
+		console.log(searchOption,isAMovie);
 		searchContext.setTitle(searchOption);
 		searchContext.setType(isAMovie);
 		setSearchOption('')
 	};
 
-const loadSuggestions = useCallback(async(title:string)=>{
-if(isAMovie){
-	const result = await Movie.getMovie(title);
+// const loadSuggestions = useCallback(async(title:string)=>{
+// if(isAMovie){
+// 	const result = await Movie.getMovie(title);
 
-}
+// }
 
-},[])
+// },[])
 
 
 
@@ -57,7 +58,7 @@ if(isAMovie){
 					<option value="Movie">Movie</option>
 					<option value="TvSeries">TvSeries</option>
 				</Form.Select>
-				<Button onClick={searchMovieOrTvSeries}>Serach</Button>
+				<Button  onClick={searchMovieOrTvSeries}>Serach</Button>
 			</InputGroup>
 		</>
 	);

@@ -14,14 +14,15 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
+	background-position: bottom;
 	min-height: 400px;
 	border-radius: 15px;
 	transition: 0.8s;
 }
-.one {
+/* .one {
 	background-position: center;
 	background-size: cover;
-}
+} */
 .text {
 	position: absolute;
 	top: 0;

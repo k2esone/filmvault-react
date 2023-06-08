@@ -7,7 +7,7 @@ const MovieComp = (props: any) => {
 				style={{
 					backgroundImage: `url(https://image.tmdb.org/t/p/w500/${props.poster_path})`,
 					backgroundPosition: "center",
-					backgroundSize: "contain",
+					backgroundSize: "cover",
 				}}
 				className="img one"></div>
 			<div className="text text-one">

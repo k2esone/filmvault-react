@@ -11,7 +11,7 @@ const HeaderComp = () => {
 				</div>
 				<div className="input_conteiner">
 					<div className="input_box">
-						<SerchBar></SerchBar>
+						<SerchBar ></SerchBar>
 					</div>
 				</div>
 			</div>

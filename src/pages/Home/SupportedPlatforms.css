@@ -5,17 +5,15 @@
 
     background-color: #ff4603;
   }
-.logo{
-    z-index: 2000;
-    width: 150px;
-    height: 150px;
 
-
-}
 .platofrms{
     background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/ceb3b1eb-2673-4dd9-a6e3-0cd7a5e130ee/4d2ee17a-526f-487b-9520-7a902b811698/PL-pl-20230522-popsignuptwoweeks-perspective_alpha_website_large.jpg")
 }
 img{
     width: 100%;
     height: 100%;
+    max-width: 220px;
+    max-height: 220px;
+    border-radius: 15px;
+    
 }
