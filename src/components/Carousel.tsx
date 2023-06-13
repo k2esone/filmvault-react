@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./Carousel.css";
 import MovieCard from "./MovieCard";
+import { MovieModel } from "../model/MovieModel.";
 
 const Carousel = (props: any) => {
 	const settings = {
@@ -42,13 +43,14 @@ const Carousel = (props: any) => {
 	return (
 		<div className="cards">
 			<Slider {...settings}>
-				{props.popularMovies.map((movie: any) => (
+				{props.movies.map((movie: MovieModel) => (
 					<div className="check px-1 mx-2 d-flex justify-content-center">
 						<MovieCard
-
 							poster_path={movie.poster_path}
-							original_title={movie.original_title}
-							overview={movie.overview}></MovieCard>
+							title={movie.title}
+							overview={movie.overview}
+	
+							></MovieCard>
 					</div>
 				))}
 			</Slider>

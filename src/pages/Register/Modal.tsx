@@ -3,9 +3,9 @@ import Modal from "react-bootstrap/Modal";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import './Modal.css'
-import { ModalTitle } from "react-bootstrap";
+// import { ModalTitle } from "react-bootstrap";
 import { useState } from "react";
-import { RegisterModel } from "../model/RegisterModel";
+import { RegisterModel } from "../../model/RegisterModel";
 
 const ModalRegister = (props: any) => {
 	const [enteredUserName, setEnterdedUserName] = useState("");
@@ -48,8 +48,8 @@ const ModalRegister = (props: any) => {
 				<h4>Register</h4>
 				<form className="d-flex flex-column mt-3">
 					<label htmlFor="username">Username</label>
-					<input 
-						style={{ backgroundColor: enteredUserName.length < 4 ? "red" : ''}}
+					<input
+						style={{ backgroundColor: enteredUserName.length < 4 ? "red" : "" }}
 						id="username"
 						value={enteredUserName}
 						type="text"

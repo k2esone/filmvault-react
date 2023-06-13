@@ -1,6 +1,13 @@
+import { MovieModel } from "../model/MovieModel.";
 import "./MovieCard.css";
 
 const MovieComp = (props: any) => {
+
+
+
+
+
+	
 	return (
 		<div className="movie-card">
 			<div
@@ -11,7 +18,8 @@ const MovieComp = (props: any) => {
 				}}
 				className="img one"></div>
 			<div className="text text-one">
-				<h3 className="title">{props.original_title}</h3>
+				<h3 className="title-card">{props.title}</h3>
+
 				<p>{props.overview}</p>
 			</div>
 		</div>

@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Modal from "./Modal";
+import Modal from "../pages/Register/Modal";
 import LogInModal from "../pages/LogIn/LogInModal";
 import BrandLogo from "./BrandLogo";
 import { UserContext } from "../context/UserContext";
@@ -51,7 +51,6 @@ const NavBar = () => {
 						<div className="navbar-nav ms-auto">
 							{!userCtx.isLogedIn && (
 								<>
-									{" "}
 									<a
 										onClick={() => setLogInmodalShow(true)}
 										className="nav-button nav-link"
@@ -72,14 +71,9 @@ const NavBar = () => {
 									<a className="nav-button nav-link" href="#">
 										Profil
 									</a>
+
 									<a className="nav-button nav-link" href="#">
-										Movies
-									</a>
-									<a className="nav-button nav-link" href="#">
-										TvSeries
-									</a>
-									<a className="nav-button nav-link" href="#">
-										Games
+										LogOut
 									</a>
 								</>
 							)}

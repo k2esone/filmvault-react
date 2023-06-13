@@ -6,8 +6,8 @@ export type SearchOptions = {
 	setTitle: (s: string) => void;
 	type: boolean;
 	setType: (b: boolean) => void;
-	gener: string[];
-	setGener: (s: string[]) => void;
+	gener: any;
+	setGener: (s: any) => void;
 	platform: PlatformModel[];
 	setPlatform: (s: PlatformModel[]) => void;
 	year: number | null;
@@ -29,7 +29,7 @@ export const SerchContext = createContext<SearchOptions>({
 export const SearchOptionsProvider = (props: React.PropsWithChildren) => {
 	const [title, setCurrentTitle] = useState("");
 	const [type, setCurrentType] = useState(true);
-	const [gener, setCurrentGener] = useState<string[]>([]);
+	const [gener, setCurrentGener] = useState<any>([]);
 	const [platform, setCurrenPlatforms] = useState<PlatformModel[]>([]);
 	const [year, setCurrentYear] = useState<number|null>(null);
 
@@ -39,7 +39,7 @@ export const SearchOptionsProvider = (props: React.PropsWithChildren) => {
 	const setType = (type: boolean) => {
 		setCurrentType(type);
 	};
-	const setGener = (gen:string[])=>{
+	const setGener = (gen:any)=>{
 		setCurrentGener(gen);
 	}
 	const setPlatform = (pla:PlatformModel[]) =>{

@@ -1,15 +1,13 @@
-import { useCallback, useContext, useMemo, useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
-import { debounce } from "lodash"
+
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { SerchContext } from "../context/CurentSearchContext";
-import { Movie } from "../api/Movie";
 
 const SerchBar = () => {
 	const [searchOption, setSearchOption] = useState("");
 	const [isAMovie, setIsaMovie] = useState(true);
-	// const [suggestion, setSuggestions] = useState([]);
 
 	const searchContext = useContext(SerchContext);
 
@@ -17,7 +15,6 @@ const SerchBar = () => {
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		setSearchOption(event.target.value);
-		console.log(searchOption)
 	};
 	const selectedType = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		if (event.target.value === "TvSeries") {
@@ -25,20 +22,11 @@ const SerchBar = () => {
 		}
 	};
 	const searchMovieOrTvSeries = () => {
-		console.log(searchOption,isAMovie);
+		console.log(searchOption, isAMovie);
 		searchContext.setTitle(searchOption);
 		searchContext.setType(isAMovie);
-		setSearchOption('')
+		setSearchOption("");
 	};
-
-// const loadSuggestions = useCallback(async(title:string)=>{
-// if(isAMovie){
-// 	const result = await Movie.getMovie(title);
-
-// }
-
-// },[])
-
 
 
 
@@ -49,7 +37,6 @@ const SerchBar = () => {
 					aria-label="Text input with dropdown button"
 					onChange={CurrentValueOfSearchBar}
 					value={searchOption}
-					
 				/>
 
 				<Form.Select
@@ -58,7 +45,7 @@ const SerchBar = () => {
 					<option value="Movie">Movie</option>
 					<option value="TvSeries">TvSeries</option>
 				</Form.Select>
-				<Button  onClick={searchMovieOrTvSeries}>Serach</Button>
+				<Button onClick={searchMovieOrTvSeries}>Serach</Button>
 			</InputGroup>
 		</>
 	);

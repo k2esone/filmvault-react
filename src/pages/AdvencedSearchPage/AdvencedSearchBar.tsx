@@ -26,7 +26,7 @@ const AdvencedSearchPage = () => {
 
 	const [plaforms, setplatforms] = useState(platformr);
 	const [gener, setGener] = useState(geners);
-	const [year, setYear] = useState<number | null>(null);
+	const [year, setYear] = useState<number>(0);
 
 	const platformCheckHandler = (index: number) => {
 		setplatforms(
@@ -38,10 +38,32 @@ const AdvencedSearchPage = () => {
 		);
 	};
 
+	const generCheckHandler = (index: number) => {
+		setGener(
+			gener.map((gen, currenIndex) =>
+				currenIndex === index ? { ...gen, checked: !gen.checked } : gen
+			)
+		);
+	};
+
 	useEffect(() => {
-		console.log(searchContext.setPlatform(plaforms));
-		console.log(searchContext.platform);
+		searchContext.setPlatform(plaforms);
+		
+		
 	}, [platformCheckHandler]);
+	
+	useEffect(() => {
+	
+		searchContext.setGener(gener);
+	
+	
+	
+	}, [ generCheckHandler]);
+	useEffect(() => {
+
+		searchContext.setYear(year!);
+		
+	}, [year]);
 
 	return (
 		<>
@@ -83,7 +105,7 @@ const AdvencedSearchPage = () => {
 										type="checkbox"
 										checked={gen.checked}
 										id={`checkbox-${index}`}
-										onChange={() => platformCheckHandler(index)}
+										onChange={() => generCheckHandler(index)}
 									/>
 									<label
 										className="form-check-label"
@@ -106,10 +128,13 @@ const AdvencedSearchPage = () => {
 									</span>
 								</div>
 								<input
+									value={year}
 									type="text"
 									className="form-control"
 									aria-label="Default"
 									aria-describedby="inputGroup-sizing-default"
+									maxLength={4}
+									onChange={(e)=>setYear(+e.target.value)}
 								/>
 							</div>
 						</div>
@@ -120,6 +145,4 @@ const AdvencedSearchPage = () => {
 	);
 };
 export default AdvencedSearchPage;
-function useContex() {
-	throw new Error("Function not implemented.");
-}
+

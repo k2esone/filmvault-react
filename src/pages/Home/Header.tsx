@@ -1,5 +1,5 @@
 import SerchBar from "../../components/SearchBar";
-import "./Header.css";
+import "./Home.css";
 const HeaderComp = () => {
 	return (
 		<section className="header">

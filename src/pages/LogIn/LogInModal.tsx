@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 const LogInModal = (props: any) => {
+	
 	return (
 		<>
 			<Modal {...props} dialogClassName="modal-30w">

@@ -1,10 +1,10 @@
-import "./Contact.css";
+import "./Home.css";
 
 const Contact = () => {
 	return (
 		<section id="contact" className="contact py-5">
 			<h2 className="section-title">About Us</h2>
-			<div className="underline"></div>
+			<div className="underline-home"></div>
 
 			<div className="container">
 				<div className="row text-center contact-us">
