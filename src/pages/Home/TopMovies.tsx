@@ -7,32 +7,38 @@ import { SerchContext } from "../../context/CurentSearchContext";
 import { Movie } from "../../api/Movie";
 import { TvSeries } from "../../api/TvSeries";
 import { MovieModel } from "../../model/MovieModel.";
+import axios, { AxiosError } from "axios";
 
 const TopMovies = () => {
 	const [popularMovies, setPopularMovies] = useState<MovieModel[]>([]);
 	const searchContext = useContext(SerchContext);
 	const { title, type } = searchContext;
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState<string>("");
 
-	const getMovies = async () => {
-		const result = await TestMovie.getPopularMovies();
+	const getMovies = useCallback (async () => {
+		setIsLoading(true);
+		try {
+			const result = await TestMovie.getPopularMovies();
+			setPopularMovies(result.data);
+		} catch (e) {
+			if (axios.isAxiosError(e)) {
+				
+				setError(e.message + e.code);
+			}
+		}
+		setIsLoading(false);
+	},[]);
 
-		setPopularMovies(result.data);
-		console.log(result.data);
-	};
-
-	const findMovieorSeries = async () => {
+	const findMovieorSeries = async() => {
 		if (searchContext.title.length > 3) {
 			if (!searchContext.type) {
-				const result = await TvSeries.getSeries(searchContext.title);
-				setPopularMovies(result.data.results);
-				console.log(searchContext.type);
-				console.log(result);
+				console.log("SZUKASZ TV SERIES");
 				return;
 			}
 			const result = await Movie.getMovie(searchContext.title);
-			setPopularMovies(result.data.results);
 			console.log(result);
-			console.log(searchContext.title.length);
+			setPopularMovies(result.data);
 		}
 	};
 
@@ -42,7 +48,7 @@ const TopMovies = () => {
 
 	useEffect(() => {
 		getMovies();
-	}, []);
+	}, [getMovies]);
 	return (
 		<div className="py-5">
 			<h2 className="d-flex justify-content-center">
@@ -50,7 +56,14 @@ const TopMovies = () => {
 			</h2>
 			<div className="underline-home"></div>
 			<div className="container d-flex justify-content-around">
-				<Carousel movies={popularMovies}></Carousel>
+				{!isLoading && popularMovies.length > 0 && (
+					<Carousel movies={popularMovies}></Carousel>
+				)}
+				{!isLoading && popularMovies.length === 0 && <p>Found no movies</p>}
+				{!isLoading && error &&<p>{error}</p>}
+				{isLoading && <p>Loading...</p>}
+				
+
 			</div>
 		</div>
 	);

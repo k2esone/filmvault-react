@@ -1,8 +1,14 @@
+import NavBar from "../../components/NavBar";
+import Footer from "../Home/Footer";
 import "./Profile.css";
 
 const EditProfile = () => {
+
+
+
 	return (
 		<>
+		<NavBar></NavBar>
 			<div className="container-xl px-4 mt-4" >
 				{/* <!-- Account page navigation--> */}
 
@@ -119,7 +125,7 @@ const EditProfile = () => {
 									</div>
 								</div>
 								{/* <!-- Save changes button--> */}
-								<button className="btn btn-primary" type="button">
+								<button   className="btn btn-primary" type="button">
 									Save changes
 								</button>
 							</div>
@@ -129,6 +135,7 @@ const EditProfile = () => {
                 </div>
       
             </div>
+			<Footer></Footer>
 		</>
 	);
 };

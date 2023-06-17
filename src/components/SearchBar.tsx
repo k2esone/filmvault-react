@@ -28,8 +28,6 @@ const SerchBar = () => {
 		setSearchOption("");
 	};
 
-
-
 	return (
 		<>
 			<InputGroup className="mb-3">

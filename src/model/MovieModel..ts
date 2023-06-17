@@ -6,12 +6,11 @@ export type MovieModel = {
 	title: string;
 	overview: string;
 	runtime: string;
-
 	credits: string;
 	ratting: number;
 	apiID: number;
 	vodPlatforms: VodPlatforms[];
 	region: Region;
-	poster_path: string;
-	release_date: string;
+	posterPath: string;
+	releaseDate: string;
 };

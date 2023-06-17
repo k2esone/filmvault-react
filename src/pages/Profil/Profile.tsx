@@ -3,14 +3,24 @@ import netflix from "../../img/platforms/netflix1.jpg";
 import hbo from "../../img/platforms/hbop.jpg";
 import disney from "../../img/platforms/disney1.jpg";
 import { useState } from "react";
+import EditProfile from "./EditProfile";
+import NavBar from "../../components/NavBar";
+import Footer from "../Home/Footer";
+import { Link } from "react-router-dom";
 
 const Profil = () => {
 const [profilInfo, setProfilInfo] = useState();
 
+const [profilPlatforms, setProfilPlatforms]=useState([])
+
+
+
+
 
 	return (
 		<>
-			<div className="container">
+		<NavBar></NavBar>
+		<div className="container">
 				<div className="main-body">
 					<div className="row gutters-sm">
 						<div className="col-md-4 mb-3">
@@ -29,7 +39,7 @@ const [profilInfo, setProfilInfo] = useState();
 											<p className="text-muted font-size-sm">
 												Bay Area, San Francisco, CA
 											</p>
-											<button className="btn btn-primary">Edit Profil</button>
+											<Link className="nav-link" to='/profil/edit'><button  className="btn btn-primary">Edit Profil</button></Link>
 											<button className="btn btn-outline-primary">
 												Change Pic
 											</button>
@@ -139,6 +149,7 @@ const [profilInfo, setProfilInfo] = useState();
 					</div>
 				</div>
 			</div>
+		<Footer></Footer>
 		</>
 	);
 };

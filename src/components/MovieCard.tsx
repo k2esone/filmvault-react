@@ -12,7 +12,7 @@ const MovieComp = (props: any) => {
 		<div className="movie-card">
 			<div
 				style={{
-					backgroundImage: `url(https://image.tmdb.org/t/p/w500/${props.poster_path})`,
+					backgroundImage: `url(https://image.tmdb.org/t/p/w500/${props.posterPath})`,
 					backgroundPosition: "center",
 					backgroundSize: "cover",
 				}}

@@ -6,6 +6,7 @@ import Modal from "../pages/Register/Modal";
 import LogInModal from "../pages/LogIn/LogInModal";
 import BrandLogo from "./BrandLogo";
 import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
 const NavBar = () => {
 	const [modalShow, setModalShow] = useState(false);
 	const [loginModalShow, setLogInmodalShow] = useState(false);
@@ -48,12 +49,12 @@ const NavBar = () => {
 								: "collapse navbar-collapse"
 						}
 						id="navbarNavAltMarkup">
-						<div className="navbar-nav ms-auto">
+						<div className="navbar-nav ms-auto d-flex align-items-center">
 							{!userCtx.isLogedIn && (
 								<>
 									<a
 										onClick={() => setLogInmodalShow(true)}
-										className="nav-button nav-link"
+										className="nav-button nav-link my-2"
 										href="#">
 										LogIn
 									</a>
@@ -68,9 +69,18 @@ const NavBar = () => {
 
 							{userCtx.isLogedIn && (
 								<>
-									<a className="nav-button nav-link" href="#">
+									<Link className="nav-button nav-link" to="/profil">
 										Profil
-									</a>
+									</Link>
+									<Link className="nav-button nav-link" to="/search">
+										Search
+									</Link>
+									<Link className="nav-button nav-link" to="/movies">
+										Movies
+									</Link>
+									<Link className="nav-button nav-link" to="/search">
+										Search
+									</Link>
 
 									<a className="nav-button nav-link" href="#">
 										LogOut

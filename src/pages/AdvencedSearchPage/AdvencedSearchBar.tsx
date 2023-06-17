@@ -11,22 +11,10 @@ const platformr = [
 	{ name: "Apple", checked: false },
 ];
 
-const geners = [
-	{ name: "Action", checked: false },
-	{ name: "Comedy", checked: false },
-	{ name: "Drama", checked: false },
-	{ name: "Fantasy", checked: false },
-	{ name: "Horror", checked: false },
-	{ name: "Romance", checked: false },
-	{ name: "Thriller", checked: false },
-];
-
 const AdvencedSearchPage = () => {
 	const searchContext = useContext(SerchContext);
-
+	const [showPlatforms, setShowPlatforms] = useState(false);
 	const [plaforms, setplatforms] = useState(platformr);
-	const [gener, setGener] = useState(geners);
-	const [year, setYear] = useState<number>(0);
 
 	const platformCheckHandler = (index: number) => {
 		setplatforms(
@@ -38,32 +26,10 @@ const AdvencedSearchPage = () => {
 		);
 	};
 
-	const generCheckHandler = (index: number) => {
-		setGener(
-			gener.map((gen, currenIndex) =>
-				currenIndex === index ? { ...gen, checked: !gen.checked } : gen
-			)
-		);
-	};
-
 	useEffect(() => {
 		searchContext.setPlatform(plaforms);
 		
-		
 	}, [platformCheckHandler]);
-	
-	useEffect(() => {
-	
-		searchContext.setGener(gener);
-	
-	
-	
-	}, [ generCheckHandler]);
-	useEffect(() => {
-
-		searchContext.setYear(year!);
-		
-	}, [year]);
 
 	return (
 		<>
@@ -73,71 +39,39 @@ const AdvencedSearchPage = () => {
 					<SerchBar></SerchBar>
 				</div>
 				<div className="conteiner d-flex flex-row">
-					<div className="adv-conteiner container-sm col-md-4 d-flex flex-column justify-content-center align-items-center">
-						<h4>Choose Platforms:</h4>
-
-						{plaforms.map((platform: any, index: number) => (
-							<>
-								<div key={platform.name} className="form-check w-25">
-									<input
-										className="form-check-input"
-										type="checkbox"
-										checked={platform.checked}
-										id={`checkbox-${index}`}
-										onChange={() => platformCheckHandler(index)}
-									/>
-									<label
-										className="form-check-label"
-										htmlFor={`checkbox-${index}`}>
-										{platform.name}
-									</label>
-								</div>
-							</>
-						))}
-					</div>
-					<div className="adv-conteiner container-sm col-md-4 d-flex flex-column justify-content-center align-items-center">
-						<h4 className="mt-5">Geners:</h4>
-						{gener.map((gen: any, index: number) => (
-							<>
-								<div key={gen.name} className="form-check w-25">
-									<input
-										className="form-check-input"
-										type="checkbox"
-										checked={gen.checked}
-										id={`checkbox-${index}`}
-										onChange={() => generCheckHandler(index)}
-									/>
-									<label
-										className="form-check-label"
-										htmlFor={`checkbox-${index}`}>
-										{gen.name}
-									</label>
-								</div>
-							</>
-						))}
-					</div>
-					<div className="adv-conteiner container-sm col-md-4 d-flex flex-column justify-content-center align-items-center">
-						<h4>Year of release:</h4>
-						<div className="form-check d-flex flex-row">
-							<div className="input-group mb-3">
-								<div className="input-group-prepend">
-									<span
-										className="input-group-text"
-										id="inputGroup-sizing-default">
-										Year
-									</span>
-								</div>
-								<input
-									value={year}
-									type="text"
-									className="form-control"
-									aria-label="Default"
-									aria-describedby="inputGroup-sizing-default"
-									maxLength={4}
-									onChange={(e)=>setYear(+e.target.value)}
-								/>
-							</div>
-						</div>
+					<div className="dropdown">
+						<button
+							onClick={() => setShowPlatforms(!showPlatforms)}
+							className="btn btn-primary dropdown-toggle"
+							type="button"
+							id="dropdownMenuButton"
+							data-mdb-toggle="dropdown"
+							aria-expanded="false">
+							Choose Platforms
+						</button>
+						<ul
+							className={showPlatforms ? "dropdown-menu show" : "dropdown-menu"}
+							aria-labelledby="dropdownMenuButton">
+							{plaforms.map((platform: any, index: number) => (
+								<li key={platform.name}>
+									<a className="dropdown-item" href="#">
+										<div className="form-check">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												checked={platform.checked}
+												onChange={() => platformCheckHandler(index)}
+												value={platform.name}
+												id={`checkbox-${index}`}
+											/>
+											<label className="form-check-label" htmlFor="Checkme1">
+												{platform.name}
+											</label>
+										</div>
+									</a>
+								</li>
+							))}
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -145,4 +79,3 @@ const AdvencedSearchPage = () => {
 	);
 };
 export default AdvencedSearchPage;
-

@@ -1,36 +1,26 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-// import './Modal.css'
-// import { ModalTitle } from "react-bootstrap";
 import { useState } from "react";
 import { RegisterModel } from "../../model/RegisterModel";
+import { FieldValues, useForm, useFormContext } from 'react-hook-form';
+import BrandLogo from "../../components/BrandLogo";
 
 const ModalRegister = (props: any) => {
-	const [enteredUserName, setEnterdedUserName] = useState("");
-	const [enteredEmail, setEnterdedEmail] = useState("");
-	const [enteredPassword, setEnterdedPassword] = useState("");
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<RegisterModel>();
 
-	const userNameHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setEnterdedUserName(event.target.value);
-	};
-	const userEmailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setEnterdedEmail(event.target.value);
-	};
-	const userPasswordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setEnterdedPassword(event.target.value);
-	};
-	const registerUserHendler = () => {
+	const registerUserHendler = (data: FieldValues) => {
 		const user: RegisterModel = {
-			userName: enteredUserName,
-			email: enteredEmail,
-			password: enteredPassword,
+			userName: data.username,
+			email: data.email,
+			password: data.password,
 		};
 		console.log(user);
-		setEnterdedUserName("");
-		setEnterdedEmail("");
-		setEnterdedPassword("");
+		console.log(errors);
 	};
 
 	return (
@@ -41,37 +31,49 @@ const ModalRegister = (props: any) => {
 			centered>
 			<Modal.Header closeButton>
 				<Modal.Title id="contained-modal-title-vcenter">
-					<h1 className="text-center">FilmValut</h1>
+					<BrandLogo></BrandLogo>
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<h4>Register</h4>
-				<form className="d-flex flex-column mt-3">
+				<form
+					onSubmit={handleSubmit((data: FieldValues) => {
+						registerUserHendler(data);
+					})}
+					className="d-flex flex-column mt-3">
 					<label htmlFor="username">Username</label>
+
 					<input
-						style={{ backgroundColor: enteredUserName.length < 4 ? "red" : "" }}
-						id="username"
-						value={enteredUserName}
-						type="text"
-						onChange={userNameHandler}></input>
+						{...register("userName", {
+							required: "This is required",
+							maxLength: 20,
+							minLength: { value: 4, message: "Min lenght is 4" },
+						})}></input>
+				<p className="text-danger">{errors.userName?.message}</p>
 					<label htmlFor="email">Email</label>
+
 					<input
-						id="email"
-						value={enteredEmail}
-						type="email"
-						onChange={userEmailHandler}></input>
+						{...register("email", {
+							required: "This is required and must be an email",
+							maxLength: 25,
+							pattern:  (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/),
+						})}></input>
+					<p className="text-danger">{errors.email?.message}</p>
+
 					<label htmlFor="password">Password</label>
 					<input
-						id="password"
 						type="password"
-						value={enteredPassword}
-						onChange={userPasswordHandler}
+						{...register("password", {
+							required: "Min lenght 6",
+							minLength: 6,
+						})}
 					/>
+					<p className="text-danger">{errors.password?.message}</p>
+					<Button className="my-5" type="submit">
+						Send
+					</Button>
 				</form>
 			</Modal.Body>
-			<Modal.Footer>
-				<Button onClick={registerUserHendler}>Send</Button>
-			</Modal.Footer>
 		</Modal>
 	);
 };

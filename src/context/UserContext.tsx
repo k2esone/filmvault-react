@@ -13,7 +13,7 @@ export const UserContext = createContext<UserOptions>({
 });
 
 export const UserContextProvider = (props: React.PropsWithChildren) => {
-	const [isLogedIn, setIsLogedIn] = useState(false);
+	const [isLogedIn, setIsLogedIn] = useState(true);
 
 	useEffect(() => {
 		const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");

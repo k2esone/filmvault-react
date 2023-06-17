@@ -5,7 +5,11 @@ import "./Carousel.css";
 import MovieCard from "./MovieCard";
 import { MovieModel } from "../model/MovieModel.";
 
-const Carousel = (props: any) => {
+interface Props {
+	movies:MovieModel[]
+}
+
+const Carousel = ({movies}:Props) => {
 	const settings = {
 		dots: true,
 		infinite: false,
@@ -39,18 +43,19 @@ const Carousel = (props: any) => {
 				},
 			},
 		],
+		movies
 	};
 	return (
 		<div className="cards">
 			<Slider {...settings}>
-				{props.movies.map((movie: MovieModel) => (
-					<div className="check px-1 mx-2 d-flex justify-content-center">
+			{movies.map((movie: MovieModel) => (
+					<div
+						key={movie.id}
+						className="check px-1 mx-2 d-flex justify-content-center">
 						<MovieCard
-							poster_path={movie.poster_path}
+							posterPath={movie.posterPath}
 							title={movie.title}
-							overview={movie.overview}
-	
-							></MovieCard>
+							overview={movie.overview}></MovieCard>
 					</div>
 				))}
 			</Slider>
