@@ -1,23 +1,31 @@
+import "./App.css";
 
-import { Modal } from 'react-bootstrap';
-import './App.css';
-import BrandLogo from './components/BrandLogo';
-import Carousel from './components/Carousel';
-import MovieComp from './components/MovieComp';
-import NavBar from './components/NavBar';
-import Header from './pages/Home/Header';
-import SupportedPlatforms from './pages/Home/SupportedPlatforms';
-import TopMovies from './pages/Home/TopMovies';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import AppRouter from "./router/AppRouter";
+import { ToastContainer, toast } from "react-toastify";
+import { UserContextProvider } from "./context/UserContext";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  return (
- <>
- <NavBar></NavBar>
-<Header></Header>
-<TopMovies></TopMovies>
-<SupportedPlatforms></SupportedPlatforms>
- </>
-  );
+	return (
+		<>
+			<UserContextProvider>
+				<AppRouter></AppRouter>
+			</UserContextProvider>
+			<ToastContainer
+				position="top-center"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
+		</>
+	);
 }
 
 export default App;
