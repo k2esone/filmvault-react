@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { PlatformModel } from "../model/PlatformModel";
+import { VodPlatforms } from "../model/VodPlatformsModel";
 
 export type SearchOptions = {
 	title: string;
@@ -8,8 +8,8 @@ export type SearchOptions = {
 	setType: (b: boolean) => void;
 	gener: any;
 	setGener: (s: any) => void;
-	platform: PlatformModel[];
-	setPlatform: (s: PlatformModel[]) => void;
+	platform: VodPlatforms[];
+	setPlatform: (s: VodPlatforms[]) => void;
 	year: number | null;
 	setYear: (s: number) => void;
 };
@@ -30,7 +30,7 @@ export const SearchOptionsProvider = (props: React.PropsWithChildren) => {
 	const [title, setCurrentTitle] = useState("");
 	const [type, setCurrentType] = useState(true);
 	const [gener, setCurrentGener] = useState<any>([]);
-	const [platform, setCurrenPlatforms] = useState<PlatformModel[]>([]);
+	const [platform, setCurrenPlatforms] = useState<VodPlatforms[]>([]);
 	const [year, setCurrentYear] = useState<number|null>(null);
 
 	const setTitle = (name: string) => {
@@ -42,7 +42,7 @@ export const SearchOptionsProvider = (props: React.PropsWithChildren) => {
 	const setGener = (gen:any)=>{
 		setCurrentGener(gen);
 	}
-	const setPlatform = (pla:PlatformModel[]) =>{
+	const setPlatform = (pla:VodPlatforms[]) =>{
 		setCurrenPlatforms(pla);
 	}
 	const setYear = (ye:number|null) =>{

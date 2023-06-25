@@ -6,8 +6,11 @@ import Modal from "../pages/Register/Modal";
 import LogInModal from "../pages/LogIn/LogInModal";
 import BrandLogo from "./BrandLogo";
 import { UserContext } from "../context/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const NavBar = () => {
+
+	const navigate = useNavigate()
 	const [modalShow, setModalShow] = useState(false);
 	const [loginModalShow, setLogInmodalShow] = useState(false);
 	const [active, setActive] = useState(false);
@@ -20,6 +23,25 @@ const NavBar = () => {
 		setActive(false);
 	};
 
+	const logoutHandler = () => {
+		userCtx.onLogout();
+		navigate("/home");
+		toast.success(`
+		See you soon`, {
+			position: "top-center",
+			autoClose: 2000,
+			theme: "light",
+		});
+
+	};
+
+	const closeModalLogin = () => {
+		setLogInmodalShow(false);
+	};
+	const closeModaliRegister = () => {
+		setModalShow(false);
+	};
+	
 	return (
 		<>
 			<nav
@@ -54,7 +76,7 @@ const NavBar = () => {
 								<>
 									<a
 										onClick={() => setLogInmodalShow(true)}
-										className="nav-button nav-link my-2"
+										className="nav-button nav-link"
 										href="#">
 										LogIn
 									</a>
@@ -78,11 +100,14 @@ const NavBar = () => {
 									<Link className="nav-button nav-link" to="/movies">
 										Movies
 									</Link>
-									<Link className="nav-button nav-link" to="/search">
-										Search
+									<Link className="nav-button nav-link" to="/tvseries">
+										TvSeries
 									</Link>
 
-									<a className="nav-button nav-link" href="#">
+									<a
+										className="nav-button nav-link"
+										onClick={logoutHandler}
+										href="#">
 										LogOut
 									</a>
 								</>
@@ -90,9 +115,13 @@ const NavBar = () => {
 						</div>
 					</div>
 					<LogInModal
+						closeModal={closeModalLogin}
 						show={loginModalShow}
 						onHide={() => setLogInmodalShow(false)}></LogInModal>
-					<Modal show={modalShow} onHide={() => setModalShow(false)}></Modal>
+					<Modal
+						closeModal={closeModaliRegister}
+						show={modalShow}
+						onHide={() => setModalShow(false)}></Modal>
 				</div>
 			</nav>
 		</>

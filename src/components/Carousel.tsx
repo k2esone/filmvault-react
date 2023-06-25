@@ -4,12 +4,17 @@ import Slider from "react-slick";
 import "./Carousel.css";
 import MovieCard from "./MovieCard";
 import { MovieModel } from "../model/MovieModel.";
+import { TvSeries } from "../model/TvSeriesModel";
+import { useEffect, useState } from "react";
 
 interface Props {
-	movies:MovieModel[]
+	movies: MovieModel[];
+	tvseries: TvSeries[];
+	activ: boolean;
+	
 }
 
-const Carousel = ({movies}:Props) => {
+const Carousel = ({ movies, tvseries, activ }: Props) => {
 	const settings = {
 		dots: true,
 		infinite: false,
@@ -43,21 +48,35 @@ const Carousel = ({movies}:Props) => {
 				},
 			},
 		],
-		movies
+		movies,
 	};
 	return (
 		<div className="cards">
 			<Slider {...settings}>
-			{movies.map((movie: MovieModel) => (
-					<div
-						key={movie.id}
-						className="check px-1 mx-2 d-flex justify-content-center">
-						<MovieCard
-							posterPath={movie.posterPath}
-							title={movie.title}
-							overview={movie.overview}></MovieCard>
-					</div>
-				))}
+
+
+				{activ
+					? movies.map((movie: MovieModel) => (
+							<div
+								key={movie.id}
+								className="check px-1 mx-2 d-flex justify-content-center">
+								<MovieCard
+									title={movie.title}
+									posterPath={movie.posterPath}
+									overview={movie.overview}></MovieCard>
+							</div>
+					  ))
+					: tvseries.map((series: TvSeries) => (
+							<div
+								key={series.id}
+								className="check px-1 mx-2 d-flex justify-content-center">
+								<MovieCard
+									name={series.name}
+									posterPath={series.posterPath}
+									overview={series.overview}></MovieCard>
+							</div>
+
+					  ))}
 			</Slider>
 		</div>
 	);

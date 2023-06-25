@@ -4,7 +4,7 @@ import { MovieModel } from "../model/MovieModel.";
 export class TestMovie {
 	static getPopularMovies = async () =>
 		await axios.get<MovieModel[]>(
-			"http://localhost:8080/ext/movie/discovery?page=1",
+			"http://localhost:8080/api/movies/popular",
 			{
 				
 				headers: {

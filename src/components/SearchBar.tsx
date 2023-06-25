@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 
 import Form from "react-bootstrap/Form";
@@ -11,6 +11,8 @@ const SerchBar = () => {
 
 	const searchContext = useContext(SerchContext);
 
+	
+
 	const CurrentValueOfSearchBar = (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
@@ -19,14 +21,18 @@ const SerchBar = () => {
 	const selectedType = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		if (event.target.value === "TvSeries") {
 			setIsaMovie(false);
+		}else{
+			setIsaMovie(true)
 		}
+
 	};
-	const searchMovieOrTvSeries = () => {
+
+	const searchMovieOrTvSeries = useCallback(() => {
 		console.log(searchOption, isAMovie);
 		searchContext.setTitle(searchOption);
 		searchContext.setType(isAMovie);
 		setSearchOption("");
-	};
+	},[CurrentValueOfSearchBar,selectedType]);
 
 	return (
 		<>
@@ -43,7 +49,7 @@ const SerchBar = () => {
 					<option value="Movie">Movie</option>
 					<option value="TvSeries">TvSeries</option>
 				</Form.Select>
-				<Button onClick={searchMovieOrTvSeries}>Serach</Button>
+				<Button onClick={searchMovieOrTvSeries}>Search</Button>
 			</InputGroup>
 		</>
 	);

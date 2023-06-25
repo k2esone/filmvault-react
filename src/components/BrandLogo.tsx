@@ -9,7 +9,7 @@ const BrandLogo = () => {
 			<div className="icon">
 			<i className="fa-solid fa-film"></i>
 			</div>
-			<Link className="nav-link" to="/" ><h1>Film<span className="brand-letter">V</span>alut</h1></Link>
+			<Link className="nav-link"  to="/" ><h1>Film<span className="brand-letter">V</span>ault</h1></Link>
 			
 		</div>
 	);

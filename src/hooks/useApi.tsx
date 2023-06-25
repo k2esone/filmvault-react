@@ -1,32 +1,34 @@
 import axios, { AxiosResponse } from "axios";
-import React, { useCallback, useState } from "react";
-import { MovieModel } from "../model/MovieModel.";
+import React, { useCallback, useContext, useState } from "react";
 
-export type Props = {
-	requestMethod:()=>Promise<AxiosResponse<any>>;
-	applayDate: React.SetStateAction<MovieModel[]> => void;
-};
 
-export default function useApi({ requestMethod, applayDate }: any) {
+
+
+export default function useApi(
+	
+	applayDate: any
+) {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string>("");
 
-	const sendRequest = useCallback(async () => {
+
+	const sendRequest = useCallback(async (requestMethod:any, requestParam?:string) => {
 		setIsLoading(true);
 		try {
-			const result = await requestMethod();
+			const result = await requestMethod(requestParam);
 			applayDate(result.data);
+		
 		} catch (e) {
 			if (axios.isAxiosError(e)) {
-				setError(e.message + e.code);
+				setError(e.response?.data);
 			}
 		}
 		setIsLoading(false);
 	}, []);
 
 	return {
-		isLoading: isLoading,
-		error: error,
-		sendRequest: sendRequest,
+		isLoading,
+		error,
+		sendRequest,
 	};
 }

@@ -7,10 +7,11 @@ export type TvSeries = {
     overview:string,
     adult:boolean,
     episodes:number,
+    popularity:number,
     region:Region,
     vodPlatforms:VodPlatforms[],
-    poster_path:string,
+    posterPath:string,
     orginal_language:string,
-    first_air_date:string,
+    firstAirDate:string,
     number_of_seasons:number
 }

@@ -3,15 +3,11 @@ import { MovieModel } from "../model/MovieModel.";
 import { TvSeries } from "../model/TvSeriesModel";
 
 interface Props {
-    movie:MovieModel,
-    movieDelate:(id:number)=>void
+	movie: MovieModel;
+	movieDelate: (id: number) => void;
 }
 
-
-const UserMovieCard =({movie,movieDelate}:Props)=> {
-
-	
-
+const UserMovieCard = ({ movie, movieDelate }: Props) => {
 	return (
 		<>
 			<div className="card">
@@ -19,7 +15,7 @@ const UserMovieCard =({movie,movieDelate}:Props)=> {
 				<div className="view overlay">
 					<img
 						className="card-img-top"
-						src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).webp"
+						src={`https://image.tmdb.org/t/p/w500/${movie.posterPath}`}
 						alt="Card image cap"
 					/>
 					<a href="#!">
@@ -34,17 +30,26 @@ const UserMovieCard =({movie,movieDelate}:Props)=> {
 					{/* <!-- Text --> */}
 					<p className="card-text">{movie.credits}</p>
 					<ListGroup className="list-group-flush">
-						<ListGroup.Item>{movie.releaseDate}</ListGroup.Item>
-						<ListGroup.Item>{movie.runtime}</ListGroup.Item>
-						<ListGroup.Item>{movie.ratting}</ListGroup.Item>
+						<ListGroup.Item>ReleaseData : {movie.releaseDate}</ListGroup.Item>
+						<ListGroup.Item>Run time: {movie.runtime} min</ListGroup.Item>
+						<ListGroup.Item>Popularity: {movie.popularity} via MovieDb </ListGroup.Item>
+							<ListGroup.Item>
+						{movie.vodPlatforms.map((v) => (
+						
+								<a rel="noreferrer" target="_blank" href={v.vodURL}>
+									<img
+										src={`https://image.tmdb.org/t/p/w500/${v.logoPath}`}
+										alt="logo"
+										className="rounded-circle"
+										width="50"
+									/>
+								</a>
+							
+						))}
+						</ListGroup.Item>
 					</ListGroup>
 					{/* <!-- Button --> */}
-					<a
-						href="#"
-						onClick={() => movieDelate(movie.id)}
-						className="btn btn-primary">
-						Button
-					</a>
+				
 				</div>
 			</div>
 		</>

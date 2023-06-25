@@ -19,6 +19,7 @@ const MovieComp = (props: any) => {
 				className="img one"></div>
 			<div className="text text-one">
 				<h3 className="title-card">{props.title}</h3>
+				<h3 className="title-card">{props.name}</h3>
 
 				<p>{props.overview}</p>
 			</div>

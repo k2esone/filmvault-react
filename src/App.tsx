@@ -1,18 +1,29 @@
 import "./App.css";
 
-import { Route, RouterProvider, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import SearchPage from "./pages/AdvencedSearchPage/SearchPage";
-import Movies from "./pages/Movies/Movies";
-import NavBar from "./components/NavBar";
-import Profil from "./pages/Profil/Profile";
-import Footer from "./pages/Home/Footer";
-import EditProfile from "./pages/Profil/EditProfile";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import AppRouter from "./router/AppRouter";
+import { ToastContainer, toast } from "react-toastify";
+import { UserContextProvider } from "./context/UserContext";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	return (
-		<>	
+		<>
+			<UserContextProvider>
+				<AppRouter></AppRouter>
+			</UserContextProvider>
+			<ToastContainer
+				position="top-center"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 		</>
 	);
 }

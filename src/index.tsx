@@ -14,14 +14,12 @@ import EditProfile from "./pages/Profil/EditProfile";
 import Movies from "./pages/Movies/Movies";
 
 const router = createBrowserRouter([
-	{path: '/', element:<Home></Home>},
-	{path:'/search', element:<SearchPage></SearchPage>},
-	{path:"/profil", element:<Profil></Profil>},
-	{path:'/profil/edit', element:<EditProfile></EditProfile>},
-	{path:'/movies', element:<Movies></Movies>}
+	{ path: "/", element: <Home></Home> },
+	{ path: "/search", element: <SearchPage></SearchPage> },
+	{ path: "/profil", element: <Profil></Profil> },
+	{ path: "/profil/edit", element: <EditProfile></EditProfile> },
+	{ path: "/movies", element: <Movies></Movies> },
 ]);
-
-
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
@@ -30,8 +28,8 @@ const root = ReactDOM.createRoot(
 //przeniesc do appa
 root.render(
 	<React.StrictMode>
-		<UserContextProvider>
-		<RouterProvider router={router} />
-		</UserContextProvider>
+		<BrowserRouter>
+			<App></App>
+		</BrowserRouter>
 	</React.StrictMode>
 );

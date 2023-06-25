@@ -15,7 +15,7 @@ export type UserProfilInformation = {
 	region: Region;
 	profilePic: string;
 	role: string;
-	crreatedAt: string;
+	createdAt: string;
 	lastActivity: string;
 	tvSeries: TvSeries[];
 	movies: MovieModel[];
