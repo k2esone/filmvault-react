@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# FilmVault-React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+FilmVault-React is a web application built with React that allows users to browse and discover movies. The project utilizes modern web technologies such as React, Redux, and the Movie Database (TMDb) API.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Browse popular movies
+- Search for movies by title
+- View movie details including overview, release date, and average rating
+- Save favorite movies to a watchlist
 
-### `npm start`
+## System Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Before getting started with the project, make sure your system meets the following requirements:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Node.js 
+- npm 
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository to your local environment:
+git clone https://github.com/k2esone/filmvault-react.git
 
-### `npm run build`
+2. Navigate to the project directory:
+cd filmvault-react
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install the dependencies:
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Configure the API key:
+- Create an account on [TMDb](https://www.themoviedb.org/) and generate an API key.
+- Copy the `.env.example` file and rename it to `.env`.
+- Replace the value of `REACT_APP_API_KEY` in the `.env` file with your API key.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Start the development server:
+npm start
 
-### `npm run eject`
+6. The application should now be running on [http://localhost:3000](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To deploy the application to a production environment, follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Build the optimized bundle:
+npm run build
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Deploy the contents of the `build` directory to your hosting platform.
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If you would like to contribute to the development of FilmVault-React project, you can follow these steps:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Fork the repository and create a new branch for your changes.
+
+2. Make your changes and commit them.
+
+3. Push your changes to your forked repository.
+
+4. Open a pull request (PR) on GitHub to submit your changes to the project's main branch.
+
+## Authors
+
+- MWolok
+- Mateuszcell
+- k2esone
+- dwydm
+- RadBia
+
+## License
+
+This project is licensed under the [license_name] license. For more information, see the [LICENSE](https://github.com/k2esone/filmvault-react/blob/master/LICENSE) file.
